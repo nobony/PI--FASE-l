@@ -4,13 +4,38 @@
 
 
 void lerCSV(const char *dataset4, VetorProdutos *v){
-    // ler linha por linha com loop
-    while(v->dados ){
-        //parse dos dados na linha com outro loop
-        //Imprimir cabeçario
-    }
+    //abre o arquivo
+     FILE *file; //ponteiro do arquivo
+
+    file = fopen("../dataset4.csv", "r");
     
-}
+    if (!file) {
+        printf("Erro em abrir o arquivo\n");
+        exit (1);
+    }
 
+    char linha[200]; //define o vetor linha, a string a ser lida
 
-//parseamento dos dados com strtok sla
+    //ignorar cabeçario
+    fgets(linha, sizeof(linha), file);
+
+     // ler linha por linha com while(buffer, tamanho, arquivo)){}
+    while(fgets(linha, sizeof(linha), file)){
+        Produto p; //cria a estrutura vazia para ser preenchida
+
+         //parse dos dados na linha com strtok
+        char *token = strtok(linha, ",");
+        if(!token) continue; //valida
+        p.id = atoi(token); //aloca em id e transforma string em int
+
+        char *token = strtok(linha, ",");
+        if(!token) continue; //valida
+        p.nome; //aloca em nome
+
+        char *token = strtok(linha, ",");
+        if(!token) continue; //valida
+        p.valor = atof(token); //aloca em valor e transforma string em float
+
+        addProdutos(v, p);
+        }
+    }
