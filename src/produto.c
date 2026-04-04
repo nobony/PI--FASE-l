@@ -22,8 +22,8 @@ void addProduto(VetorProdutos *v, Produto p){
         v->dados = (Produto*) realloc(v->dados, v-> capacidade * sizeof(Produto));//realocou a memória
     }
     v->dados[v->tamanho++] = p;
-}
 
+}
 
 //liberar para evitar problemas
 void liberarMemoria(VetorProdutos *v){

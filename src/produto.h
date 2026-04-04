@@ -20,7 +20,7 @@ typedef struct{
 void inicVetor(VetorProdutos *v); 
 
 //sintaxe funcao addProduto
-void addProdutos(VetorProdutos *v, Produto p);
+void addProduto(VetorProdutos *v, Produto p);
 
 //sintaxe funcao liberarMemoria
 void liberarMemoria(VetorProdutos *v);

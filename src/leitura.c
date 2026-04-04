@@ -1,8 +1,9 @@
+#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "produto.h"
+
 // lê o arquivo e preenche o vetor(funcao lerCSV)
-
-
 void lerCSV(const char *dataset4, VetorProdutos *v){
     //abre o arquivo
      FILE *file; //ponteiro do arquivo
@@ -28,14 +29,14 @@ void lerCSV(const char *dataset4, VetorProdutos *v){
         if(!token) continue; //valida
         p.id = atoi(token); //aloca em id e transforma string em int
 
-        char *token = strtok(linha, ",");
+        token = strtok(linha, ",");
         if(!token) continue; //valida
         p.nome; //aloca em nome
 
-        char *token = strtok(linha, ",");
+        token = strtok(linha, ",");
         if(!token) continue; //valida
         p.valor = atof(token); //aloca em valor e transforma string em float
 
-        addProdutos(v, p);
+        addProduto(v, p);
         }
     }

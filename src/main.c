@@ -10,7 +10,7 @@ int main(){
     inicVetor(&v);
 
     //chamada da leitura do CSV
-    lerCSV("dataset4", &v);
+    void lerCSV(const char *dataset4, VetorProdutos *v);
 
     //execução dos testes (Victor)
     //impressão dos resultados (Victor)
