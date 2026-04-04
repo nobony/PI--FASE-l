@@ -4,12 +4,7 @@
 
 int main(){
 //inicialização do vetor
-    struct VetorProdutos vetor;
-
-    vetor.tamanho = 0;
-    vetor.capacidade = 1000;
-    vetor.dados = malloc(vetor.capacidade)
-
+    struct VetorProdutos *v;
 
 /*chamada da leitura do CSV
 execução dos testes

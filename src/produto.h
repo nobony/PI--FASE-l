@@ -11,16 +11,16 @@ typedef struct {
 
 //struct VetorProdutos
 typedef struct{
-    struct Produto* dados;
+    Produto* dados;
     int tamanho;
     int capacidade;
 } VetorProdutos;
 
 //sintaxe funcao inicializarVetor
-void inicVetor(VetorProdutos *c); 
+void inicVetor(VetorProdutos *v); 
 
 //sintaxe funcao addProduto
-void addProdutos(VetorProdutos *c, Produto p);
+void addProdutos(VetorProdutos *v, Produto p);
 
 //sintaxe funcao liberarMemoria
 void liberarMemoria(VetorProdutos *v);
