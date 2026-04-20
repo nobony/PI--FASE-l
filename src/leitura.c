@@ -24,7 +24,7 @@ void lerCSV(const char *dataset4, VetorProdutos *v){
 
      // ler linha por linha com while(buffer, tamanho, arquivo)){}
     while(fgets(linha, sizeof(linha), file)){
-        Produto p; //cria a estrutura vazia para ser preenchida
+        Produto p;
 
          //parse dos dados na linha com strtok
         char *token = strtok(linha, ",");
@@ -46,5 +46,18 @@ void lerCSV(const char *dataset4, VetorProdutos *v){
         addProduto(v, p);
         }
 
+        if (v->tamanho == 0) {
+
+        printf("[ERRO]: O arquivo foi lido, mas nenhum registro valido foi encontrado.\n");
+
+        printf("Verifique se o arquivo CSV esta vazio ou com formato incorreto.\n");
+
+        fclose(file);
+
+        exit(1);
+
+    }
+
+        fclose(file); // Não esqueça de fechar o arquivo sempre!
         printf("Total de registros: %d\n", v->tamanho);
     }
