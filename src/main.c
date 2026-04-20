@@ -2,28 +2,24 @@
 #include <stdlib.h>
 #include "produto.h"
 #include "leitura.h"
+#include "testes.h"   // <--- ESTE É FUNDAMENTAL!
+#include "busca.h"
+#include "tempo.h"
 
-int main(){
-    //inicialização do vetor
+int main() {
     VetorProdutos v;
-
-    printf("Início do programa\n");
     inicVetor(&v);
 
-    //chamada da leitura do CSV
-    lerCSV("src/dataset4.csv", &v);
+    printf("Iniciando programa...\n");
 
+    printf("Lendo o arquivo CSV...\n");
+    lerCSV("dataset4.csv", &v); 
 
-    //inicio do clock 
-    
-    //impressão dos resultados (Victor)
-    buscaSequencial(&v);
+    if (v.tamanho > 0) {
+        testesdoprofessor(&v); 
+    }
 
-    //liberacao de memoria pos uso (evita memory leak)
+    printf("Liberando memoria...\n");
     liberarMemoria(&v);
-
-    printf("\nPrograma encerrado.\n");
-
     return 0;
-
 }
