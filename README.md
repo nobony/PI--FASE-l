@@ -34,11 +34,13 @@ Com um dataset de 400.009 registros, obtivemos os seguintes tempos:
 
 👥 Integrantes
 
+SOFIA DE CARVALHO - 2512130063
+
 VICTOR SOUSA PEREIRA - 2512130015
 
 PEDRO DE FARIA MELLO - 2512130037
 
-SOFIA DE CARVALHO - 2512130063
+
 
 
 
