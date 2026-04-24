@@ -1,0 +1,26 @@
+# Prerequisites: C-specific
+*.o
+*.obj
+*.out
+*.exe
+*.a
+*.lib
+*.so
+*.dylib
+
+# Build directories
+build/
+bin/
+obj/
+
+# VS Code specific
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# OS specific
+.DS_Store
+Thumbs.db
