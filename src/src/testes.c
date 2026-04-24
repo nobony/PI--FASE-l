@@ -3,7 +3,7 @@
 #include "busca.h"
 #include "tempo.h"
 
-void testesdoprofessor(VetorProdutos *v) {
+void testes(VetorProdutos *v) {
     char *labels[] = {"Inicio", "Meio", "Final", "Inexistente"};
     int n_buscas = 1000;
 

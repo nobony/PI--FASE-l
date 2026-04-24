@@ -16,7 +16,7 @@ int main() {
     lerCSV("dataset4.csv", &v); 
 
     if (v.tamanho > 0) {
-        testesdoprofessor(&v); 
+        testes(&v); 
     }
 
     printf("Liberando memoria...\n");
