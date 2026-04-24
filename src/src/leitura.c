@@ -10,7 +10,7 @@ void lerCSV(const char *dataset4, VetorProdutos *v){
     //abre o arquivo
      FILE *file; //ponteiro do arquivo
 
-    file = fopen("dataset4.csv", "r");
+    file = fopen("data/dataset4.csv", "r");
     
     if (!file) {
         printf("Erro em abrir o arquivo\n");
