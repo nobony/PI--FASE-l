@@ -4,41 +4,60 @@
 #include "tempo.h"
 
 void testesdoprofessor(VetorProdutos *v) {
-    //Id para testes
-    long int idsTeste[4] = {
-        v->dados[0].id,               // Início
-        v->dados[v->tamanho / 2].id,   // Meio
-        v->dados[v->tamanho - 1].id,   // Final
-        -999                         // Inexistente (ID que não existe)
-    };
-
     char *labels[] = {"Inicio", "Meio", "Final", "Inexistente"};
+    int n_buscas = 1000;
 
-    printf("\n--- RELATORIO TECNICO INICIAL ---\n");
+    printf("\n--- RELATORIO TECNICO DE PERFORMANCE ---\n");
     printf("Registros carregados: %d\n", v->tamanho);
     printf("----------------------------------------------------------\n");
     printf("%-12s | %-15s | %-15s\n", "Posicao", "Tempo Total(ms)", "Tempo Medio(ms)");
     printf("----------------------------------------------------------\n");
 
-    for (int i = 0; i < 4; i++) {
-        double somaTemposRepeticao = 0;
+    
+    
+    //Id para testes
+    int idsIniciais[3] = {
+        0,            // Início
+        (v->tamanho / 2) - 500,  // Meio (pegando 500 antes do centro)
+        v->tamanho - 1001       // Final (últimos 1000)
+    };
 
-        // Repetir ao menos 3 vezes
-        for (int r = 0; r < 3; r++) {
-            double t_inicio = obterTempo();
+    
+    for (int i = 0; i < 3; i++) {
+        double t_inicio = obterTempo();
 
-            // 1.000 buscas consecutivas
-            for (int b = 0; b < 1000; b++) {
-                buscaSequencial(v, idsTeste[i]);
+        // Realiza 1000 buscas
+         for (int b = 0; b < 1000; b++) {
+            int idAlvo = idsIniciais[i] + b;
+
+            if (idAlvo >= 0 && idAlvo < v->tamanho) {
+                long int id_para_busca = v->dados[idAlvo].id;
+                buscaSequencial(v, id_para_busca);
             }
-
-            double t_fim = obterTempo();
-            somaTemposRepeticao += (t_fim - t_inicio);
         }
+        
+        double t_fim = obterTempo();
+        double tempoTotal = t_fim - t_inicio;
+        double tempoMedio = tempoTotal / n_buscas;
 
-        double tempoMedioTotal = somaTemposRepeticao / 3.0;
-        double tempoPorBusca = tempoMedioTotal / 1000.0;
-
-        printf("%-12s | %-15.4f | %-15.6f\n", labels[i], tempoMedioTotal, tempoPorBusca);
+        printf("%-12s | %-15.4f | %-15.6f\n", labels[i], tempoTotal, tempoMedio);
     }
+
+    printf("---------------------------------------------------------------------\n");
+    
+    long int idInexistente = -999; 
+    double t_inc_ini = obterTempo();
+    
+    for (int b = 0; b < n_buscas; b++) {
+        buscaSequencial(v, idInexistente);
+    }
+    
+    double t_inc_fim = obterTempo();
+    double tempoTotalInc = t_inc_fim - t_inc_ini;
+    double tempoMedioInc = tempoTotalInc / n_buscas;
+
+    printf("%-12s | %-15.4f | %-15.6f\n", "Inexistente", tempoTotalInc, tempoMedioInc);
+    printf("---------------------------------------------------------------------\n");
 }
+
+
