@@ -14,12 +14,7 @@ bin/
 obj/
 
 # VS Code specific
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
+.vscode/
 
 # OS specific
 .DS_Store
